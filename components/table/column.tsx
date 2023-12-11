@@ -16,7 +16,7 @@ export const columns: ColumnDef<FileType>[] = [
   {
     accessorKey: "size",
     header: "Size",
-    cell: ({ renderValue, props }) => {
+    cell: ({ renderValue }) => {
       return <span>{prettyBytes(renderValue() as number)}</span>;
     },
   },
