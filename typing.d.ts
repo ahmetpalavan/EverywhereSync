@@ -2,7 +2,7 @@ export type FileType = {
   id: string;
   filename: string;
   fullName: string;
-  timestamp: Date;
+  timestamps: Date;
   downloadURL: string;
   size: number;
   type: string;
