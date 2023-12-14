@@ -25,6 +25,8 @@ export const Dropzone = () => {
   };
 
   const uploadPost = async (selectedFile: File) => {
+    console.log("🚀 ~ file: Dropzone.tsx:45 ~ uploadPost ~ selectedFile", selectedFile);
+    
     if (loading) return;
     if (!user) return;
 

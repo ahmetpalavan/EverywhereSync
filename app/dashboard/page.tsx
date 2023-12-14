@@ -13,14 +13,13 @@ const Page = async () => {
     return {
       id: doc.id,
       downloadURL: data.downloadURL,
-      timestamp: new Date(doc.data().timestamp?.seconds * 1000) || undefined,
+      timestamps: new Date(doc.data().timestamps?.seconds * 1000) || undefined,
       filename: data.filename,
       fullName: data.fullName,
       size: data.size,
       type: data.type,
     };
   });
-  console.log("🚀 ~ file: page.tsx:22 ~ constskeletonFile:FileType[]=docResult.docs.map ~ skeletonFile:", skeletonFile);
   return (
     <div>
       <Dropzone />
