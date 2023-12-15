@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { PencilIcon, TrashIcon } from "lucide-react";
 import { useStore } from "@/store/store";
 import { DeleteModal } from "../DeleteModal";
+import { RenameModal } from "../RenameModal";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -36,7 +37,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   const openRenameModal = (fileId: string, filename: string) => {
     setFileId(fileId);
     setFilename(filename);
-    setIsRenameModalOpen(true);
+    setIsRenameModalOpen(true); // This will set the state to open the modal
   };
 
   return (
@@ -60,6 +61,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                 <DeleteModal />
+                <RenameModal />
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {cell.column.id === "timestamps" ? (
@@ -69,7 +71,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                       </div>
                     ) : cell.column.id === "filename" ? (
                       <p
-                        onClick={() => openRenameModal((row.original as FileType).id, (row.original as FileType).filename)}
+                        onClick={() => openRenameModal((row.original as FileType).id, cell.getValue() as string)}
                         className="flex items-center hover:text-blue-500"
                       >
                         {cell.getValue() as string}

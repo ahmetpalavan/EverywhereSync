@@ -12,7 +12,7 @@ export const columns: ColumnDef<FileType>[] = [
     header: "Type",
     cell: ({ renderValue, ...props }) => {
       const type = renderValue() as string;
-      const extension: string = type.split("/")[1];
+      const extension: string = type?.split("/")[1];
       return (
         <div className="w-10">
           <FileIcon
